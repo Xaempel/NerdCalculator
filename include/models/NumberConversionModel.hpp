@@ -26,4 +26,7 @@ class NumberConversionModel{
     std::string convertToBin(int number);
     std::string convertToOct(int number);
     std::string convertToHex(int number);
+    std::string convertToDec(std::string number);
+
+    bool isDecimalNumber(std::string number);
 };
