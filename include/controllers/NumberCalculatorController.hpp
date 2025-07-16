@@ -17,28 +17,9 @@
 **  with [NerdCalculator].  If not, see <https://www.gnu.org/licenses/>.      **
 **                                                                            **
 *******************************************************************************/
+#pragma once
 
-#include "../include/controllers/NumberCalculatorController.hpp"
-
-#include <iostream>
-
-enum class MenuOption {
-   NumberCalculator = 1,
+class NumberCalculatorController {
+   public:
+   void startNumberCalculator();
 };
-
-int main()
-{
-   int selectedNumber {0};
-   std::cout << "For start select a option\n";
-   std::cout << "(1)Number calculator\n";
-   std::cin >> selectedNumber;
-
-   NumberCalculatorController numberCalculatorController;
-   switch (static_cast<MenuOption>(selectedNumber)) {
-      case MenuOption::NumberCalculator:
-         numberCalculatorController.startNumberCalculator();
-         break;
-      default:
-         break;
-   }
-}
