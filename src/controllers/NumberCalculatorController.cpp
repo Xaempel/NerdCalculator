@@ -1,5 +1,6 @@
 #include "../../include/controllers/NumberCalculatorController.hpp"
 
+#include "../../include/controllers/BitShiftController.hpp"
 #include "../../include/controllers/EndianNumberViewController.hpp"
 #include "../../include/models/NumberConversionModel.hpp"
 
@@ -13,6 +14,7 @@ enum class MenuOption {
    ConvertToDec,
    EnterAgainNumber,
    ShowNumberasEndian,
+   BitShiftOperations,
    Quit,
 };
 
@@ -37,11 +39,12 @@ void NumberCalculatorController::startNumberCalculator()
       int selectedOption;
       std::cout << "Ok I have this so now Select your option what you wanna do with this number\n";
       std::cout << "(1) Convert to bin (2) Convert to oct (3) Convert to hex (4) Convert to dec\n";
-      std::cout << "(5) Enter again number (6) Show Number as Endian\n";
-      std::cout << "(7) Quit\n";
+      std::cout << "(5) Enter again number (6) Show Number as Endian (7) Bit shift operations\n";
+      std::cout << "(8) Quit\n";
       std::cin >> selectedOption;
 
       NumberConversionModel numberConversionModel;
+      BitShiftController bitShiftController;
       int userConvertedNumber {0};
       if (numberConversionModel.isDecimalNumber(userNumber) == true) {
          userConvertedNumber = std::stoi(userNumber);
@@ -75,6 +78,10 @@ void NumberCalculatorController::startNumberCalculator()
 
          case MenuOption::ShowNumberasEndian:
             endianNumberViewController.runEndianView(userNumber);
+            break;
+
+         case MenuOption::BitShiftOperations:
+            bitShiftController.runBitShiftOperations(userNumber);
             break;
 
          case MenuOption::Quit:
